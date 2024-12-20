@@ -13,6 +13,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using CommunityToolkit.Mvvm.Input;
+using System.Globalization;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -97,6 +98,17 @@ namespace UserControls.NumericUpDown
             get => (string)GetValue(StringFormatProperty);
             set => SetValue(StringFormatProperty, value);
         }
+        public static readonly DependencyProperty TextAlignmentProperty
+            = DependencyProperty.Register(
+                "TextAlignment",
+                typeof(TextAlignment),
+                typeof(NumericUpDown),
+                new PropertyMetadata(TextAlignment.Left));
+        public TextAlignment TextAlignment
+        {
+            get => (TextAlignment)GetValue(TextAlignmentProperty);
+            set => SetValue(TextAlignmentProperty, value);
+        }
         RelayCommand UpCommand { get; }
         RelayCommand DownCommand { get; }
         public NumericUpDown()
@@ -125,9 +137,13 @@ namespace UserControls.NumericUpDown
         }
         public void ConvertBack(string value)
         {
-            if (decimal.TryParse(value, out decimal result))
+            if (decimal.TryParse(value, NumberStyles.AllowExponent | NumberStyles.Float, CultureInfo.InvariantCulture, out decimal result))
             {
                 Value = result;
+            }
+            else
+            {
+                Value = Value;
             }
         }
     }

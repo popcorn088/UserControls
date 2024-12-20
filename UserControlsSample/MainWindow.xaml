@@ -10,7 +10,8 @@
     mc:Ignorable="d">
 
     <Grid>
-        <usercontrols:NumericUpDown Height="30" Value="{Binding Value, Mode=TwoWay}" StringFormat="E5" HorizontalContentAlignment="Right" />
+        <!--usercontrols:NumericUpDown Height="30" Value="{Binding Value, Mode=TwoWay}" StringFormat="E5" /-->
+        <usercontrols:NumericUpDown Height="30" Value="{Binding Value, Mode=TwoWay}" StringFormat="E5" TextAlignment="Right" />
     </Grid>
 
 </Window>
