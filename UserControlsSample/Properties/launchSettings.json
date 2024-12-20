@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "UserControlsSample (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "UserControlsSample (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
