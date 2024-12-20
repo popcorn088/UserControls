@@ -6,12 +6,18 @@
     xmlns:local="using:UserControlsSample"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:usercontrols="using:UserControls.NumericUpDown"
+    xmlns:numericupdown="using:UserControlsSample.NumericUpDownSample"
     mc:Ignorable="d">
-
     <Grid>
-        <!--usercontrols:NumericUpDown Height="30" Value="{Binding Value, Mode=TwoWay}" StringFormat="E5" /-->
-        <usercontrols:NumericUpDown Height="30" Value="{Binding Value, Mode=TwoWay}" StringFormat="E5" TextAlignment="Right" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Button Content="NumericUpDown"/>
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <numericupdown:NumericUpDownPage />
+        </Grid>
     </Grid>
-
 </Window>

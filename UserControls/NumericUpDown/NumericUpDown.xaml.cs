@@ -49,10 +49,7 @@ namespace UserControls.NumericUpDown
         public decimal Value
         {
             get => (decimal)GetValue(ValueProperty);
-            set
-            {
-                SetValue(ValueProperty, value);
-            }
+            set => SetValue(ValueProperty, value);
         }
         public static readonly DependencyProperty NickProperty
             = DependencyProperty.Register(
@@ -109,23 +106,26 @@ namespace UserControls.NumericUpDown
             get => (TextAlignment)GetValue(TextAlignmentProperty);
             set => SetValue(TextAlignmentProperty, value);
         }
-        RelayCommand UpCommand { get; }
-        RelayCommand DownCommand { get; }
+        RelayCommand<string> UpCommand { get; }
+        RelayCommand<string> DownCommand { get; }
         public NumericUpDown()
         {
             this.InitializeComponent();
-            this.UpCommand = new RelayCommand(UpCommandExecute);
-            this.DownCommand = new RelayCommand(DownCommandExecute);
+            this.UpCommand = new RelayCommand<string>(UpCommandExecute);
+            this.DownCommand = new RelayCommand<string>(DownCommandExecute);
+
         }
-        private void UpCommandExecute()
+        private void UpCommandExecute(string parameter)
         {
+            ConvertBack(parameter);
             decimal tmp = Value + Nick;
             if (Maximum < tmp) return;
             Value += Nick;
         }
 
-        private void DownCommandExecute()
+        private void DownCommandExecute(string parameter)
         {
+            ConvertBack(parameter);
             decimal tmp = Value - Nick;
             if (Minimum > tmp) return;
             Value -= Nick;
@@ -145,6 +145,16 @@ namespace UserControls.NumericUpDown
             {
                 Value = Value;
             }
+        }
+
+        private void UpButtonLoaded(object sender, RoutedEventArgs e)
+        {
+            UpButton.Height = NumericUpDownTextBox.ActualSize.Y / 2.0;
+        }
+
+        private void DownButtonLoaded(object sender, RoutedEventArgs e)
+        {
+            DownButton.Height = NumericUpDownTextBox.ActualSize.Y / 2.0;
         }
     }
 }
