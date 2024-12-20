@@ -4,12 +4,14 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UserControlsSample.NumericUpDownSample;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -26,6 +28,17 @@ namespace UserControlsSample
         public MainWindow()
         {
             this.InitializeComponent();
+        }
+
+        private void NavigationViewSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            if ((string)args.SelectedItemContainer.Content == "NumericUpDown")
+            {
+                ContentFrame.Navigate(typeof(NumericUpDownPage), null, new SlideNavigationTransitionInfo()
+                {
+                    Effect = SlideNavigationTransitionEffect.FromLeft,
+                });
+            }
         }
     }
 }
