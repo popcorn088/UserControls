@@ -13,6 +13,7 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="CoefsTableSample\CoefsTablePage.xaml" />
     <None Remove="NumericUpDownSample\NumericUpDownPage.xaml" />
   </ItemGroup>
 
@@ -45,6 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="NumericUpDownSample\NumericUpDownPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="CoefsTableSample\CoefsTablePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="UserControls.CoefsTable.CoefsTable"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UserControls.CoefsTable"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    mc:Ignorable="d"
+    x:Name="Root">
+
+    <Grid DataContext="{Binding ElementName=Root}">
+        <controls:DataGrid ItemsSource="{x:Bind Coefs}" AutoGenerateColumns="False">
+            <controls:DataGrid.Columns>
+                <controls:DataGridTemplateColumn Header="{x:Bind IndexHeader}" Visibility="{x:Bind IndexVisibility}">
+                    <controls:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="local:Coef">
+                            <TextBlock Text="{x:Bind Index}" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </controls:DataGridTemplateColumn.CellTemplate>
+                </controls:DataGridTemplateColumn>
+                <controls:DataGridTemplateColumn Header="{x:Bind ValueHeader}">
+                    <controls:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="local:Coef">
+                            <TextBox Text="{x:Bind Convert(Value), BindBack=ConvertBack, Mode=TwoWay}"/>
+                        </DataTemplate>
+                    </controls:DataGridTemplateColumn.CellTemplate>
+                </controls:DataGridTemplateColumn>
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+    </Grid>
+</UserControl>

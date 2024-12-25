@@ -12,6 +12,7 @@
         <NavigationView SelectionChanged="NavigationViewSelectionChanged">
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="NumericUpDown"/>
+                <NavigationViewItem Content="CoefsTable"/>
             </NavigationView.MenuItems>
             <Frame x:Name="ContentFrame"/>
         </NavigationView>

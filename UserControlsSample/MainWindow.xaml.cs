@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UserControlsSample.CoefsTableSample;
 using UserControlsSample.NumericUpDownSample;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -35,6 +36,13 @@ namespace UserControlsSample
             if ((string)args.SelectedItemContainer.Content == "NumericUpDown")
             {
                 ContentFrame.Navigate(typeof(NumericUpDownPage), null, new SlideNavigationTransitionInfo()
+                {
+                    Effect = SlideNavigationTransitionEffect.FromLeft,
+                });
+            }
+            else if ((string)args.SelectedItemContainer.Content == "CoefsTable")
+            {
+                ContentFrame.Navigate(typeof(CoefsTablePage), null, new SlideNavigationTransitionInfo()
                 {
                     Effect = SlideNavigationTransitionEffect.FromLeft,
                 });
