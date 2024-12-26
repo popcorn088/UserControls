@@ -11,7 +11,12 @@
     x:Name="Root">
 
     <Grid DataContext="{Binding ElementName=Root}">
-        <controls:DataGrid ItemsSource="{x:Bind Coefs}" AutoGenerateColumns="False">
+        <controls:DataGrid
+            ItemsSource="{x:Bind Coefs}"
+            AutoGenerateColumns="False"
+            SelectionChanged="SelectionChanged"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Auto">
             <controls:DataGrid.Columns>
                 <controls:DataGridTemplateColumn Header="{x:Bind IndexHeader}" Visibility="{x:Bind IndexVisibility}">
                     <controls:DataGridTemplateColumn.CellTemplate>
@@ -23,11 +28,17 @@
                 <controls:DataGridTemplateColumn Header="{x:Bind ValueHeader}">
                     <controls:DataGridTemplateColumn.CellTemplate>
                         <DataTemplate x:DataType="local:Coef">
-                            <TextBox Text="{x:Bind Convert(Value), BindBack=ConvertBack, Mode=TwoWay}"/>
+                            <TextBox Text="{x:Bind Convert(Value), BindBack=ConvertBack, Mode=TwoWay}" TextAlignment="{x:Bind TextAlignment}"/>
                         </DataTemplate>
                     </controls:DataGridTemplateColumn.CellTemplate>
                 </controls:DataGridTemplateColumn>
             </controls:DataGrid.Columns>
+            <controls:DataGrid.ContextFlyout>
+                <MenuFlyout>
+                    <MenuFlyoutItem Text="Add" Click="AddClicked"/>
+                    <MenuFlyoutItem Text="Remove" Click="RemoveClicked"/>
+                </MenuFlyout>
+            </controls:DataGrid.ContextFlyout>
         </controls:DataGrid>
     </Grid>
 </UserControl>

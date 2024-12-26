@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.UI.Xaml;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,11 +34,21 @@ namespace UserControlsSample.CoefsTableSample
                 }
             }
         }
+        public TextAlignment TextAlignment { get; set; }
 
         public CoefsTablePageViewModel()
         {
             _coefs.CoefValueChanged += CoefsChanged;
-            _coefs.Items.Add(new Coef() { Index = 1, Value = 10, StringFormat = this.StringFormat});
+            for (int i = 0; i < 30; i++)
+            {
+                _coefs.Items.Add(new Coef
+                {
+                    Index = i,
+                    Value = i,
+                    StringFormat = this.StringFormat,
+                    TextAlignment = this.TextAlignment,
+                });
+            }
         }
 
         private void CoefsChanged(Coef coef)

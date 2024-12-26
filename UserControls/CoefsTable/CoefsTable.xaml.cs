@@ -76,10 +76,61 @@ namespace UserControls.CoefsTable
             get => (string)this.GetValue(StringFormatProperty);
             set => this.SetValue(StringFormatProperty, value);
         }
+        public static readonly DependencyProperty TextAlignmentProperty
+            = DependencyProperty.Register(
+                "TextAlignment",
+                typeof(TextAlignment),
+                typeof(CoefsTable),
+                new PropertyMetadata(TextAlignment.Left));
+        public TextAlignment TextAlignment
+        {
+            get => (TextAlignment)GetValue(TextAlignmentProperty);
+            set => SetValue(TextAlignmentProperty, value);
+        }
 
         public CoefsTable()
         {
             this.InitializeComponent();
+        }
+
+        private void AddClicked(object sender, RoutedEventArgs e)
+        {
+            var coef = new Coef
+            {
+                Index = Coefs.Count,
+                Value = 0,
+                StringFormat = this.StringFormat,
+            };
+            Coefs.Add(coef);
+        }
+
+        private void RemoveClicked(object sender, RoutedEventArgs e)
+        {
+            List<Coef> coefList = [];
+            foreach (Coef coef in Coefs)
+            {
+                if (coef.IsSelected == true)
+                {
+                    coefList.Add(coef);
+                }
+            }
+
+            foreach (Coef coef in coefList)
+            {
+                Coefs.Remove(coef);
+            }
+        }
+
+        private void SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (Coef item in e.AddedItems.Cast<Coef>())
+            {
+                item.IsSelected = true;
+            }
+            foreach (Coef item in e.RemovedItems.Cast<Coef>())
+            {
+                item.IsSelected = false;
+            }
         }
     }
 }
