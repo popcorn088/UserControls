@@ -30,15 +30,20 @@ namespace UserControls.CoefsTable
         public string StringFormat
         {
             get => _stringFormat;
-            set => SetProperty(ref _stringFormat, value);
+            set
+            {
+                SetProperty(ref _stringFormat, value);
+                OnPropertyChanged(nameof(Value));
+            }
         }
         public string Convert(decimal value)
-        {
-            return value.ToString(StringFormat);
-        }
+            => value.ToString(StringFormat);
         public void ConvertBack(string value)
         {
-            Value = decimal.Parse(value, NumberStyles.AllowExponent | NumberStyles.Float);
+            if (decimal.TryParse(value, NumberStyles.AllowExponent | NumberStyles.Float, CultureInfo.InvariantCulture, out decimal result))
+            {
+                Value = result;
+            }
         }
     }
 }

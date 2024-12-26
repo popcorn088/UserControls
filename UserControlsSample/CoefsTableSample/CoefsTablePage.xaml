@@ -14,9 +14,17 @@
         <coefstable:CoefsTable
             x:Name="CoefsTable"
             Coefs="{Binding Coefs}"
-            StringFormat="F2"
+            StringFormat="{Binding StringFormat, Mode=TwoWay}"
             IndexHeader="HOGE"
             ValueHeader="FUGA"
             IndexVisibility="Collapsed"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="StringFormat"/>
+            <TextBox Grid.Column="1" Text="{Binding StringFormat, Mode=TwoWay}"/>
+        </Grid>
     </StackPanel>
 </Page>

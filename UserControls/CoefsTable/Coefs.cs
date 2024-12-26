@@ -17,12 +17,6 @@ namespace UserControls.CoefsTable
             get => _items;
             set => SetProperty(ref _items, value);
         }
-        private string _stringFormat = string.Empty;
-        public string StringFormat
-        {
-            get => _stringFormat;
-            set => SetProperty(ref _stringFormat, value);
-        }
         public delegate void CoefValueChangedDelegate(Coef coef);
         public CoefValueChangedDelegate CoefValueChanged;
         public Coefs()

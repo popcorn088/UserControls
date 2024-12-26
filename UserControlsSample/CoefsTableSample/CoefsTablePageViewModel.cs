@@ -17,12 +17,27 @@ namespace UserControlsSample.CoefsTableSample
         {
             get => _coefs.Items;
         }
+        private string _stringFormat = "F3";
+        public string StringFormat
+        {
+            get
+            {
+                return _stringFormat;
+            }
+            set
+            {
+                SetProperty(ref _stringFormat, value);
+                foreach (Coef coef in Coefs)
+                {
+                    coef.StringFormat = _stringFormat;
+                }
+            }
+        }
 
         public CoefsTablePageViewModel()
         {
             _coefs.CoefValueChanged += CoefsChanged;
-            _coefs.StringFormat = "E2";
-            _coefs.Items.Add(new Coef() { Index = 1, Value = 10, StringFormat = _coefs.StringFormat});
+            _coefs.Items.Add(new Coef() { Index = 1, Value = 10, StringFormat = this.StringFormat});
         }
 
         private void CoefsChanged(Coef coef)
