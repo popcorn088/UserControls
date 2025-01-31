@@ -20,6 +20,8 @@ namespace UserControls.CoefsTable
         }
         public delegate void CoefValueChangedDelegate(Coef coef);
         public CoefValueChangedDelegate CoefValueChanged;
+        public delegate void NumOfCoefsChangedDelegate();
+        public NumOfCoefsChangedDelegate NumOfCoefsChanged;
         public Coefs() => _items.CollectionChanged += ValueCollectionChanged;
 
         private void ValueCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -33,11 +35,13 @@ namespace UserControls.CoefsTable
             }
             else if (e.Action == NotifyCollectionChangedAction.Remove)
             {
-                foreach (Coef item in e.NewItems)
+                foreach (Coef item in e.OldItems)
                 {
                     item.PropertyChanged -= ItemPropertyChanged;
                 }
             }
+
+            NumOfCoefsChanged?.Invoke();
         }
 
         private void ItemPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

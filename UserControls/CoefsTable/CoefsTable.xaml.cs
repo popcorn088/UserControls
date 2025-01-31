@@ -23,13 +23,13 @@ namespace UserControls.CoefsTable
     {
         public static readonly DependencyProperty CoefsProperty
             = DependencyProperty.Register(
-                "Coefs",
-                typeof(ObservableCollection<Coef>),
+                nameof(Coefs),
+                typeof(Coefs),
                 typeof(CoefsTable),
                 new PropertyMetadata(null));
-        public ObservableCollection<Coef> Coefs
+        public Coefs Coefs
         {
-            get => (ObservableCollection<Coef>)this.GetValue(CoefsProperty);
+            get => (Coefs)this.GetValue(CoefsProperty);
             set => this.SetValue(CoefsProperty, value);
         }
         public static readonly DependencyProperty IndexHeaderProperty
@@ -76,16 +76,16 @@ namespace UserControls.CoefsTable
             get => (string)this.GetValue(StringFormatProperty);
             set => this.SetValue(StringFormatProperty, value);
         }
-        public static readonly DependencyProperty TextAlignmentProperty
+        public static readonly DependencyProperty ValueAlignmentProperty
             = DependencyProperty.Register(
-                "TextAlignment",
+                nameof(ValueAlignment),
                 typeof(TextAlignment),
                 typeof(CoefsTable),
                 new PropertyMetadata(TextAlignment.Left));
-        public TextAlignment TextAlignment
+        public TextAlignment ValueAlignment
         {
-            get => (TextAlignment)GetValue(TextAlignmentProperty);
-            set => SetValue(TextAlignmentProperty, value);
+            get => (TextAlignment)GetValue(ValueAlignmentProperty);
+            set => SetValue(ValueAlignmentProperty, value);
         }
 
         public CoefsTable()
@@ -97,17 +97,17 @@ namespace UserControls.CoefsTable
         {
             var coef = new Coef
             {
-                Index = Coefs.Count,
+                Index = Coefs.Items.Count,
                 Value = 0,
                 StringFormat = this.StringFormat,
             };
-            Coefs.Add(coef);
+            Coefs.Items.Add(coef);
         }
 
         private void RemoveClicked(object sender, RoutedEventArgs e)
         {
             List<Coef> coefList = [];
-            foreach (Coef coef in Coefs)
+            foreach (Coef coef in Coefs.Items)
             {
                 if (coef.IsSelected == true)
                 {
@@ -117,7 +117,7 @@ namespace UserControls.CoefsTable
 
             foreach (Coef coef in coefList)
             {
-                Coefs.Remove(coef);
+                Coefs.Items.Remove(coef);
             }
         }
 

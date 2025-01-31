@@ -47,6 +47,5 @@ namespace UserControls.CoefsTable
             }
         }
         public bool IsSelected { get; set; }
-        public TextAlignment TextAlignment { get; set; }
     }
 }

@@ -14,9 +14,9 @@ namespace UserControlsSample.CoefsTableSample
     public class CoefsTablePageViewModel : ObservableObject
     {
         private readonly Coefs _coefs = new();
-        public ObservableCollection<Coef> Coefs
+        public Coefs Coefs
         {
-            get => _coefs.Items;
+            get => _coefs;
         }
         private string _stringFormat = "F3";
         public string StringFormat
@@ -28,7 +28,7 @@ namespace UserControlsSample.CoefsTableSample
             set
             {
                 SetProperty(ref _stringFormat, value);
-                foreach (Coef coef in Coefs)
+                foreach (Coef coef in Coefs.Items)
                 {
                     coef.StringFormat = _stringFormat;
                 }
