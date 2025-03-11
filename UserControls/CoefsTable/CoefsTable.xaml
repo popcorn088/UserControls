@@ -8,8 +8,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     xmlns:helper="using:UserControls.Helper"
+    xmlns:converter="using:UserControls.Converters"
     mc:Ignorable="d"
     x:Name="Root">
+    <UserControl.Resources>
+        <converter:DecimalConverter x:Key="DecimalConveter"/>
+    </UserControl.Resources>
     <Grid>
         <controls:DataGrid
             ItemsSource="{Binding ElementName=Root, Path=Coefs.Items}"
@@ -18,20 +22,15 @@
             VerticalScrollBarVisibility="Auto"
             HorizontalScrollBarVisibility="Auto">
             <controls:DataGrid.Columns>
-                <controls:DataGridTemplateColumn Header="{x:Bind IndexHeader}" Visibility="{x:Bind IndexVisibility}">
-                    <controls:DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate x:DataType="local:Coef">
-                            <TextBlock Text="{x:Bind Index}" VerticalAlignment="Center" helper:AncestorSource.AncestorType="UserControl" HorizontalTextAlignment="Center"/>
-                        </DataTemplate>
-                    </controls:DataGridTemplateColumn.CellTemplate>
-                </controls:DataGridTemplateColumn>
-                <controls:DataGridTemplateColumn Header="{x:Bind ValueHeader}">
-                    <controls:DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate x:DataType="local:Coef">
-                            <TextBox Text="{x:Bind Convert(Value), BindBack=ConvertBack, Mode=TwoWay}" VerticalAlignment="Center" helper:AncestorSource.AncestorType="UserControl" TextAlignment="{Binding ValueAlignment}"/>
-                        </DataTemplate>
-                    </controls:DataGridTemplateColumn.CellTemplate>
-                </controls:DataGridTemplateColumn>
+                <controls:DataGridTextColumn
+                    IsReadOnly="True"
+                    Header="{x:Bind IndexHeader}"
+                    Visibility="{x:Bind IndexVisibility}"
+                    Binding="{Binding Index}"/>
+                <controls:DataGridTextColumn
+                    Width="1*"
+                    Header="{x:Bind ValueHeader}"
+                    Binding="{Binding Value, Converter={StaticResource DecimalConveter}, Mode=TwoWay}"/>
             </controls:DataGrid.Columns>
             <controls:DataGrid.ContextFlyout>
                 <MenuFlyout>

@@ -1,12 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Networking.Connectivity;
 
 namespace UserControls.CoefsTable
 {
@@ -26,14 +20,15 @@ namespace UserControls.CoefsTable
 
         private void ValueCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (e.Action == NotifyCollectionChangedAction.Add)
+            // Auto Index Numbering
+            for (int i = 0; i < Items.Count; i++)
             {
-                foreach (Coef item in e.NewItems)
-                {
-                    item.PropertyChanged += ItemPropertyChanged;
-                }
+                Items[i].PropertyChanged -= ItemPropertyChanged;
+                Items[i].Index = i;
+                Items[i].PropertyChanged += ItemPropertyChanged;
             }
-            else if (e.Action == NotifyCollectionChangedAction.Remove)
+
+            if (e.Action == NotifyCollectionChangedAction.Remove)
             {
                 foreach (Coef item in e.OldItems)
                 {
