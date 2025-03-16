@@ -1,11 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>UserControls</RootNamespace>
     <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &gt;= 8">win-x86;win-x64;win-arm64</RuntimeIdentifiers>
-    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PlatformTarget>x64</PlatformTarget>
+	  <UseRidGraph>True</UseRidGraph>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="CoefsTable\CoefsTable.xaml" />
@@ -30,4 +32,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy $(ProjectDir)bin\$(Configuration)\UserControls.1.0.0.nupkg $(ProjectDir)..\..\NuGet\UserControls.1.0.0.nupkg" />
+  </Target>
 </Project>

@@ -46,7 +46,6 @@ namespace UserControlsSample.CoefsTableSample
                     Index = i,
                     Value = i,
                     StringFormat = this.StringFormat,
-                    TextAlignment = this.TextAlignment,
                 });
             }
         }
