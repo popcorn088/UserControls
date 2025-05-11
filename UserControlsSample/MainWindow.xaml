@@ -13,6 +13,7 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="NumericUpDown"/>
                 <NavigationViewItem Content="CoefsTable"/>
+                <NavigationViewItem Content="ComplexCoefsTable"/>
             </NavigationView.MenuItems>
             <Frame x:Name="ContentFrame"/>
         </NavigationView>

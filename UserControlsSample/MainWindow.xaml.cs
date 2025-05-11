@@ -13,6 +13,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UserControlsSample.CoefsTableSample;
 using UserControlsSample.NumericUpDownSample;
+using UserControlsSample.ComplexCoefsTableSample;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -43,6 +44,13 @@ namespace UserControlsSample
             else if ((string)args.SelectedItemContainer.Content == "CoefsTable")
             {
                 ContentFrame.Navigate(typeof(CoefsTablePage), null, new SlideNavigationTransitionInfo()
+                {
+                    Effect = SlideNavigationTransitionEffect.FromLeft,
+                });
+            }
+            else if ((string)args.SelectedItemContainer.Content == "ComplexCoefsTable")
+            {
+                ContentFrame.Navigate(typeof(ComplexCoefsTablePage), null, new SlideNavigationTransitionInfo()
                 {
                     Effect = SlideNavigationTransitionEffect.FromLeft,
                 });

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="UserControls.ComplexCoefsTable.ComplexCoefsTable"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UserControls.ComplexCoefsTable"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:converter="using:UserControls.Converters"
+    mc:Ignorable="d"
+    x:Name="Root">
+    <UserControl.Resources>
+        <converter:DecimalConverter x:Key="DecimalConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <controls:DataGrid
+            ItemsSource="{Binding ElementName=Root, Path=ComplexCoefs.Items}"
+            AutoGenerateColumns="False"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Auto"
+            SelectionChanged="SelectionChanged">
+            <controls:DataGrid.Columns>
+                <controls:DataGridCheckBoxColumn
+                    Binding="{Binding IsChecked, Mode=TwoWay}"/>
+                <controls:DataGridTextColumn
+                    IsReadOnly="True"
+                    Binding="{Binding Index}"
+                    Header="{x:Bind IndexHeader}"
+                    Visibility="{x:Bind IndexVisibility}"/>
+                <controls:DataGridTextColumn
+                    x:Name="realHeader"
+                    Width="1*"
+                    IsReadOnly="{x:Bind IsReadOnlyComplexColumns}"
+                    Binding="{Binding Real, Converter={StaticResource DecimalConverter}}"
+                    Header="{x:Bind RealColumnHeader}"/>
+                <controls:DataGridTextColumn
+                    Width="1*"
+                    IsReadOnly="{x:Bind IsReadOnlyComplexColumns}"
+                    Binding="{Binding Imaginary, Converter={StaticResource DecimalConverter}}"
+                    Header="{x:Bind ImaginaryColumnHeader}"/>
+            </controls:DataGrid.Columns>
+            <controls:DataGrid.ContextFlyout>
+                <MenuFlyout>
+                    <MenuFlyoutItem Text="Add" Click="AddClicked"/>
+                    <MenuFlyoutItem Text="Remove" Click="RemoveClicked"/>
+                </MenuFlyout>
+            </controls:DataGrid.ContextFlyout>
+        </controls:DataGrid>
+    </Grid>
+</UserControl>

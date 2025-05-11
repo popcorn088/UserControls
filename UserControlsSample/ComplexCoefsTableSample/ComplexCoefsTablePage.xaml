@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="UserControlsSample.ComplexCoefsTableSample.ComplexCoefsTablePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UserControlsSample.ComplexCoefsTableSample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:cct="using:UserControls.ComplexCoefsTable"
+    xmlns:converter="using:UserControls.Converters"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <converter:EnumConverter x:Key="EnumConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <cct:ComplexCoefsTable
+            Grid.Row="0"
+            ComplexCoefs="{Binding ComplexCoefs}"
+            IndexHeader="{Binding IndexHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            RealColumnHeader="{Binding RealColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            ImaginaryColumnHeader="{Binding ImaginaryColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            IndexVisibility="{Binding IndexVisibility}"/>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="IndexHeader" />
+            <TextBox Text="{x:Bind _vm.IndexHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="RealColumnHeader" />
+            <TextBox Text="{x:Bind _vm.RealColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="ImaginaryColumnHeader" />
+            <TextBox Text="{Binding ImaginaryColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="IndexVisibility"/>
+            <ComboBox
+                ItemsSource="{Binding VisibilityMode}"
+                SelectedItem="{Binding IndexVisibility, Mode=TwoWay}">
+            </ComboBox>
+        </StackPanel>
+    </Grid>
+</Page>
