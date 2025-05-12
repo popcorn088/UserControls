@@ -37,7 +37,16 @@ namespace UserControls.ComplexCoefsTable
                 "IndexHeader",
                 typeof(string),
                 typeof(ComplexCoefsTable),
-                new PropertyMetadata("Index"));
+                new PropertyMetadata("Index", IndexHeaderPropertyChangedCallback));
+
+        private static void IndexHeaderPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is ComplexCoefsTable complexCoefsTable)
+            {
+                complexCoefsTable.indexColumn.Header = e.NewValue;
+            }
+        }
+
         public string IndexHeader
         {
             get => (string)this.GetValue(IndexHeaderProperty);
@@ -48,7 +57,15 @@ namespace UserControls.ComplexCoefsTable
                 "RealColumnHeader",
                 typeof(string),
                 typeof(ComplexCoefsTable),
-                new PropertyMetadata("Real"));
+                new PropertyMetadata("Real", RealColumnHeaderPropertyChangedCallback));
+
+        private static void RealColumnHeaderPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is ComplexCoefsTable complexCoefsTable)
+            {
+                complexCoefsTable.realColumn.Header = e.NewValue;
+            }
+        }
         public string RealColumnHeader
         {
             get => (string)this.GetValue(RealColumnHeaderProperty);
@@ -59,7 +76,15 @@ namespace UserControls.ComplexCoefsTable
                 "ImaginaryColumnHeader",
                 typeof(string),
                 typeof(ComplexCoefsTable),
-                new PropertyMetadata("Imaginary"));
+                new PropertyMetadata("Imaginary", ImaginaryColumnHeaderProrpertyChangedCallback));
+
+        private static void ImaginaryColumnHeaderProrpertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is ComplexCoefsTable complexCoefsTable)
+            {
+                complexCoefsTable.imaginaryColumn.Header = e.NewValue;
+            }
+        }
         public string ImaginaryColumnHeader
         {
             get => (string)this.GetValue(ImaginaryColumnHeaderProperty);
@@ -70,7 +95,16 @@ namespace UserControls.ComplexCoefsTable
                 "IndexVisibility",
                 typeof(Visibility),
                 typeof(ComplexCoefsTable),
-                new PropertyMetadata(Visibility.Visible));
+                new PropertyMetadata(Visibility.Visible, IndexVisibilityPropertyChangedCallback));
+
+        private static void IndexVisibilityPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is ComplexCoefsTable complexCoefsTable)
+            {
+                complexCoefsTable.indexColumn.Visibility = (Visibility)e.NewValue;
+            }
+        }
+
         public Visibility IndexVisibility
         {
             get => (Visibility)this.GetValue(IndexVisibilityProperty);
@@ -86,6 +120,27 @@ namespace UserControls.ComplexCoefsTable
         {
             get => (bool)this.GetValue(IsReadOnlyComplexColumnsProperty);
             set => this.SetValue(IsReadOnlyComplexColumnsProperty, value);
+        }
+
+        public static readonly DependencyProperty CheckBoxVisibilityProperty
+            = DependencyProperty.Register(
+                "CheckBoxVisibility",
+                typeof(Visibility),
+                typeof(ComplexCoefsTable),
+                new PropertyMetadata(Visibility.Visible, CheckBoxVisibilityPropertyChangedCallback));
+
+        private static void CheckBoxVisibilityPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is ComplexCoefsTable complexCoefsTable)
+            {
+                complexCoefsTable.checkBoxColumn.Visibility = (Visibility)e.NewValue;
+            }
+        }
+
+        public Visibility CheckBoxVisibility
+        {
+            get => (Visibility)this.GetValue(CheckBoxVisibilityProperty);
+            set => this.SetValue(CheckBoxVisibilityProperty, value);
         }
         public ComplexCoefsTable()
         {

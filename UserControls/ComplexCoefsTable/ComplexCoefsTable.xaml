@@ -22,19 +22,23 @@
             SelectionChanged="SelectionChanged">
             <controls:DataGrid.Columns>
                 <controls:DataGridCheckBoxColumn
-                    Binding="{Binding IsChecked, Mode=TwoWay}"/>
+                    x:Name="checkBoxColumn"
+                    Binding="{Binding IsChecked, Mode=TwoWay}"
+                    Visibility="{x:Bind CheckBoxVisibility}"/>
                 <controls:DataGridTextColumn
+                    x:Name="indexColumn"
                     IsReadOnly="True"
                     Binding="{Binding Index}"
                     Header="{x:Bind IndexHeader}"
                     Visibility="{x:Bind IndexVisibility}"/>
                 <controls:DataGridTextColumn
-                    x:Name="realHeader"
+                    x:Name="realColumn"
                     Width="1*"
                     IsReadOnly="{x:Bind IsReadOnlyComplexColumns}"
                     Binding="{Binding Real, Converter={StaticResource DecimalConverter}}"
                     Header="{x:Bind RealColumnHeader}"/>
                 <controls:DataGridTextColumn
+                    x:Name="imaginaryColumn"
                     Width="1*"
                     IsReadOnly="{x:Bind IsReadOnlyComplexColumns}"
                     Binding="{Binding Imaginary, Converter={StaticResource DecimalConverter}}"

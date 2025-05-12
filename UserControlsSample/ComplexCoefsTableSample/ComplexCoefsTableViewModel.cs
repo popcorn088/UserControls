@@ -41,13 +41,12 @@ namespace UserControlsSample.ComplexCoefsTableSample
             get => _indexVisibility;
             set => SetProperty(ref _indexVisibility, value);
         }
-        private Visibility[] _visibilityMode = Enum.GetValues<Visibility>().ToArray();
-        public Visibility[] VisibilityMode
+        private Visibility _checkBoxVisibility = Visibility.Collapsed;
+        public Visibility CheckBoxVisibility
         {
-            get => _visibilityMode;
+            get => _checkBoxVisibility;
+            set => SetProperty(ref _checkBoxVisibility, value);
         }
-        
-
         public ComplexCoefsTableViewModel()
         {
             _complexCoefs.ComplexCoefValueChanged += ComplexCoefsChanged;

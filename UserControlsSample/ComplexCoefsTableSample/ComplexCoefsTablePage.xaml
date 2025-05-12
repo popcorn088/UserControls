@@ -11,7 +11,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
-        <converter:EnumConverter x:Key="EnumConverter"/>
+        <converter:VisibilityConverter x:Key="VisibilityConverter"/>
     </Page.Resources>
 
     <Grid>
@@ -25,18 +25,28 @@
             IndexHeader="{Binding IndexHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             RealColumnHeader="{Binding RealColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             ImaginaryColumnHeader="{Binding ImaginaryColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            IndexVisibility="{Binding IndexVisibility}"/>
+            IndexVisibility="{Binding IndexVisibility, Mode=TwoWay}"
+            CheckBoxVisibility="{Binding CheckBoxVisibility, Mode=TwoWay}"/>
         <StackPanel Grid.Row="1">
             <TextBlock Text="IndexHeader" />
-            <TextBox Text="{x:Bind _vm.IndexHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{Binding IndexHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="RealColumnHeader" />
-            <TextBox Text="{x:Bind _vm.RealColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{Binding RealColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="ImaginaryColumnHeader" />
             <TextBox Text="{Binding ImaginaryColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="IndexVisibility"/>
             <ComboBox
-                ItemsSource="{Binding VisibilityMode}"
-                SelectedItem="{Binding IndexVisibility, Mode=TwoWay}">
+                x:Name="indexVisibility"
+                SelectedItem="{Binding IndexVisibility, Mode=TwoWay, Converter={StaticResource VisibilityConverter}}">
+                <x:String>Collapsed</x:String>
+                <x:String>Visible</x:String>
+            </ComboBox>
+            <TextBlock Text="CheckBoxVisibility"/>
+            <ComboBox
+                x:Name="checkBoxVisibility"
+                SelectedItem="{Binding CheckBoxVisibility, Mode=TwoWay, Converter={StaticResource VisibilityConverter}}">
+                <x:String>Collapsed</x:String>
+                <x:String>Visible</x:String>
             </ComboBox>
         </StackPanel>
     </Grid>
