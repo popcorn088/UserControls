@@ -1,24 +1,31 @@
+using CommunityToolkit.WinUI.UI.Controls;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Data;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace UserControls.CoefsTable
+namespace UserControls.CoefsTableControl
 {
     public sealed partial class CoefsTable : UserControl
     {
         public static readonly DependencyProperty CoefsProperty
             = DependencyProperty.Register(
                 nameof(Coefs),
-                typeof(Coefs),
+                typeof(ObservableCollection<Coef>),
                 typeof(CoefsTable),
-                new PropertyMetadata(null));
-        public Coefs Coefs
+                new PropertyMetadata(new ObservableCollection<Coef>())); // èâä˙ílÇê›íË
+
+        public ObservableCollection<Coef> Coefs
         {
-            get => (Coefs)this.GetValue(CoefsProperty);
+            get => (ObservableCollection<Coef>)this.GetValue(CoefsProperty);
             set => this.SetValue(CoefsProperty, value);
         }
         public static readonly DependencyProperty IndexHeaderProperty
@@ -80,23 +87,35 @@ namespace UserControls.CoefsTable
         public CoefsTable()
         {
             this.InitializeComponent();
+
+            var obj = this.FindName("dataGrid");
+
+            /*
+            Binding bind = new Binding()
+            {
+                Path = new PropertyPath(nameof(this.Coefs)),
+                Source = this,
+                Mode = BindingMode.OneWay,
+            };
+            this.dataGrid.SetBinding(DataGrid.ItemsSourceProperty, bind);
+            */
         }
 
         private void AddClicked(object sender, RoutedEventArgs e)
         {
             var coef = new Coef
             {
-                Index = Coefs.Items.Count,
+                Index = Coefs.Count,
                 Value = 0,
                 StringFormat = this.StringFormat,
             };
-            Coefs.Items.Add(coef);
+            Coefs.Add(coef);
         }
 
         private void RemoveClicked(object sender, RoutedEventArgs e)
         {
             List<Coef> coefList = [];
-            foreach (Coef coef in Coefs.Items)
+            foreach (Coef coef in Coefs)
             {
                 if (coef.IsSelected == true)
                 {
@@ -106,7 +125,7 @@ namespace UserControls.CoefsTable
 
             foreach (Coef coef in coefList)
             {
-                Coefs.Items.Remove(coef);
+                Coefs.Remove(coef);
             }
         }
 

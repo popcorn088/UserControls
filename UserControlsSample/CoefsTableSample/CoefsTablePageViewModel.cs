@@ -6,15 +6,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UserControls.CoefsTable;
+using UserControls.CoefsTableControl;
 using WinRT;
 
 namespace UserControlsSample.CoefsTableSample
 {
     public class CoefsTablePageViewModel : ObservableObject
     {
-        private readonly Coefs _coefs = new();
-        public Coefs Coefs
+        private readonly ObservableCollection<Coef> _coefs = new();
+        public ObservableCollection<Coef> Coefs
         {
             get => _coefs;
         }
@@ -28,7 +28,7 @@ namespace UserControlsSample.CoefsTableSample
             set
             {
                 SetProperty(ref _stringFormat, value);
-                foreach (Coef coef in Coefs.Items)
+                foreach (Coef coef in Coefs)
                 {
                     coef.StringFormat = _stringFormat;
                 }
@@ -38,10 +38,10 @@ namespace UserControlsSample.CoefsTableSample
 
         public CoefsTablePageViewModel()
         {
-            _coefs.CoefValueChanged += CoefsChanged;
+            //_coefs.CoefValueChanged += CoefsChanged;
             for (int i = 0; i < 30; i++)
             {
-                _coefs.Items.Add(new Coef
+                _coefs.Add(new Coef
                 {
                     Index = i,
                     Value = i,

@@ -1,22 +1,22 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using Windows.Foundation.Collections;
 
-namespace UserControls.CoefsTable
+namespace UserControls.CoefsTableControl
 {
-    public class Coefs : ObservableObject
+    public class Coefs
     {
-        private ObservableCollection<Coef> _items = [];
-        public ObservableCollection<Coef> Items
-        {
-            get => _items;
-            set => SetProperty(ref _items, value);
-        }
+        private readonly ObservableCollection<Coef> _items = new ObservableCollection<Coef>();
+        public ObservableCollection<Coef> Items => _items;
         public delegate void CoefValueChangedDelegate(Coef coef);
         public CoefValueChangedDelegate CoefValueChanged;
         public delegate void NumOfCoefsChangedDelegate();
         public NumOfCoefsChangedDelegate NumOfCoefsChanged;
-        public Coefs() => _items.CollectionChanged += ValueCollectionChanged;
+        public Coefs()
+        {
+            Items.CollectionChanged += ValueCollectionChanged;
+        }
 
         private void ValueCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {

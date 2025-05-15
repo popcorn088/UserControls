@@ -1,4 +1,4 @@
-using UserControls.CoefsTable;
+using UserControls.CoefsTableControl;
 using UserControlsSample.CoefsTableSample;
 
 namespace UserControlsSampleTest
