@@ -35,13 +35,11 @@
                     x:Name="realColumn"
                     Width="1*"
                     IsReadOnly="{x:Bind IsReadOnlyComplexColumns}"
-                    Binding="{Binding Real, Converter={StaticResource DecimalConverter}}"
                     Header="{x:Bind RealColumnHeader}"/>
                 <controls:DataGridTextColumn
                     x:Name="imaginaryColumn"
                     Width="1*"
                     IsReadOnly="{x:Bind IsReadOnlyComplexColumns}"
-                    Binding="{Binding Imaginary, Converter={StaticResource DecimalConverter}}"
                     Header="{x:Bind ImaginaryColumnHeader}"/>
             </controls:DataGrid.Columns>
             <controls:DataGrid.ContextFlyout>

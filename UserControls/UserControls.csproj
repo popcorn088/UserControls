@@ -11,7 +11,7 @@
 	  <VersionPrefix>1.1.0</VersionPrefix>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="CoefsTable\CoefsTable.xaml" />
+    <None Remove="CoefsTableControl\CoefsTable.xaml" />
     <None Remove="ComplexCoefsTable\ComplexCoefsTable.xaml" />
     <None Remove="NumericUpDown\NumericUpDown.xaml" />
   </ItemGroup>
@@ -19,6 +19,7 @@
   <ItemGroup>
       <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
       <PackageReference Include="CommunityToolkit.WinUI.UI.Controls.DataGrid" Version="7.1.2" />
+      <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
       <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.231008000" />
       <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
   </ItemGroup>
@@ -41,7 +42,7 @@
     </Page>
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy $(ProjectDir)bin\$(Configuration)\UserControls.1.0.0.nupkg $(ProjectDir)..\..\NuGet\UserControls.1.0.0.nupkg" />
-  </Target>
+	<!--Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy $(ProjectDir)bin\$(Configuration)\UserControls.1.1.0.nupkg $(ProjectDir)..\..\NuGet\UserControls.1.1.0.nupkg" />
+  </Target-->
 </Project>

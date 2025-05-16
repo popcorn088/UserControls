@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System.Globalization;
 
-namespace UserControls.CoefsTable
+namespace UserControls.CoefsTableControl
 {
     public class Coef : ObservableObject
     {

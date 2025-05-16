@@ -26,7 +26,7 @@ namespace UserControls.ComplexCoefsTable
                 nameof(ComplexCoefs),
                 typeof(ComplexCoefs),
                 typeof(ComplexCoefsTable),
-                new PropertyMetadata(null));
+                new PropertyMetadata(new ComplexCoefs()));
         public ComplexCoefs ComplexCoefs
         {
             get => (ComplexCoefs)this.GetValue(ComplexCoefsProperty);

@@ -6,7 +6,7 @@
     xmlns:local="using:UserControlsSample.CoefsTableSample"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:coefstable="using:UserControls.CoefsTable"
+    xmlns:coefstable="using:UserControls.CoefsTableControl"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -18,7 +18,7 @@
         <coefstable:CoefsTable
             x:Name="CoefsTable"
             Grid.Row="0"
-            Coefs="{Binding Coefs}"
+            Coefs="{x:Bind _vm.Coefs, Mode=OneWay}"
             StringFormat="{Binding StringFormat, Mode=TwoWay}"
             IndexHeader="HOGE"
             ValueHeader="FUGA"

@@ -6,7 +6,7 @@ using System.Linq;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace UserControls.CoefsTable
+namespace UserControls.CoefsTableControl
 {
     public sealed partial class CoefsTable : UserControl
     {
@@ -15,7 +15,7 @@ namespace UserControls.CoefsTable
                 nameof(Coefs),
                 typeof(Coefs),
                 typeof(CoefsTable),
-                new PropertyMetadata(null));
+                new PropertyMetadata(new Coefs()));
         public Coefs Coefs
         {
             get => (Coefs)this.GetValue(CoefsProperty);

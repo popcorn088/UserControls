@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <UserControl
-    x:Class="UserControls.CoefsTable.CoefsTable"
+    x:Class="UserControls.CoefsTableControl.CoefsTable"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:UserControls.CoefsTable"
+    xmlns:local="using:UserControls.CoefsTableControl"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
@@ -16,7 +16,7 @@
     </UserControl.Resources>
     <Grid>
         <controls:DataGrid
-            ItemsSource="{Binding ElementName=Root, Path=Coefs.Items}"
+            ItemsSource="{x:Bind Coefs.Items, Mode=OneWay}"
             AutoGenerateColumns="False"
             SelectionChanged="SelectionChanged"
             VerticalScrollBarVisibility="Auto"

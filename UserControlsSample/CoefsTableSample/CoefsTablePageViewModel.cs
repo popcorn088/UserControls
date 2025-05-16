@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UserControls.CoefsTable;
+using UserControls.CoefsTableControl;
 using WinRT;
 
 namespace UserControlsSample.CoefsTableSample
