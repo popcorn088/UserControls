@@ -6,7 +6,7 @@ namespace UserControls.CoefsTableControl
 {
     public class Coefs : ObservableObject
     {
-        private ObservableCollection<Coef> _items = [];
+        private ObservableCollection<Coef> _items = new();
         public ObservableCollection<Coef> Items
         {
             get => _items;

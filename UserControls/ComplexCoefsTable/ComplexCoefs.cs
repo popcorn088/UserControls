@@ -12,7 +12,7 @@ namespace UserControls.ComplexCoefsTable
 {
     public class ComplexCoefs : ObservableObject
     {
-        private ObservableCollection<ComplexCoef> _items = [];
+        private ObservableCollection<ComplexCoef> _items = new();
         public ObservableCollection<ComplexCoef> Items
         {
             get => _items;

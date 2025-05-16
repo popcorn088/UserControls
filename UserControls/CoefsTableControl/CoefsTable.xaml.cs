@@ -95,7 +95,7 @@ namespace UserControls.CoefsTableControl
 
         private void RemoveClicked(object sender, RoutedEventArgs e)
         {
-            List<Coef> coefList = [];
+            List<Coef> coefList = new();
             foreach (Coef coef in Coefs.Items)
             {
                 if (coef.IsSelected == true)

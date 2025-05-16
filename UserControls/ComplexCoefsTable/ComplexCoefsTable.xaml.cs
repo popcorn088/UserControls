@@ -172,7 +172,7 @@ namespace UserControls.ComplexCoefsTable
 
         private void RemoveClicked(object sender, RoutedEventArgs e)
         {
-            List<ComplexCoef> complexCoefList = [];
+            List<ComplexCoef> complexCoefList = new();
             foreach (ComplexCoef complexCoef in ComplexCoefs.Items)
             {
                 if (complexCoef.IsSelected == true)
