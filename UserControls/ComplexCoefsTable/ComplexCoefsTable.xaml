@@ -15,32 +15,22 @@
     </UserControl.Resources>
     <Grid>
         <controls:DataGrid
-            ItemsSource="{Binding ElementName=Root, Path=ComplexCoefs.Items}"
+            ItemsSource="{x:Bind ComplexCoefs.Items, Mode=OneWay}"
             AutoGenerateColumns="False"
             VerticalScrollBarVisibility="Auto"
             HorizontalScrollBarVisibility="Auto"
             SelectionChanged="SelectionChanged">
             <controls:DataGrid.Columns>
                 <controls:DataGridCheckBoxColumn
-                    x:Name="checkBoxColumn"
-                    Binding="{Binding IsChecked, Mode=TwoWay}"
-                    Visibility="{x:Bind CheckBoxVisibility}"/>
+                    x:Name="checkBoxColumn"/>
                 <controls:DataGridTextColumn
-                    x:Name="indexColumn"
-                    IsReadOnly="True"
-                    Binding="{Binding Index}"
-                    Header="{x:Bind IndexHeader}"
-                    Visibility="{x:Bind IndexVisibility}"/>
+                    Binding="{Binding Index}"/>
                 <controls:DataGridTextColumn
                     x:Name="realColumn"
-                    Width="1*"
-                    IsReadOnly="{x:Bind IsReadOnlyComplexColumns}"
-                    Header="{x:Bind RealColumnHeader}"/>
+                    Width="1*"/>
                 <controls:DataGridTextColumn
                     x:Name="imaginaryColumn"
-                    Width="1*"
-                    IsReadOnly="{x:Bind IsReadOnlyComplexColumns}"
-                    Header="{x:Bind ImaginaryColumnHeader}"/>
+                    Width="1*"/>
             </controls:DataGrid.Columns>
             <controls:DataGrid.ContextFlyout>
                 <MenuFlyout>

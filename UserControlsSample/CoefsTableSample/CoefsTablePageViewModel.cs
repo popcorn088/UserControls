@@ -41,12 +41,12 @@ namespace UserControlsSample.CoefsTableSample
             _coefs.CoefValueChanged += CoefsChanged;
             for (int i = 0; i < 30; i++)
             {
-                _coefs.Items.Add(new Coef
+                Coef item = new()
                 {
                     Index = i,
                     Value = i,
-                    StringFormat = this.StringFormat,
-                });
+                };
+                _coefs.Items.Add(item);
             }
         }
 

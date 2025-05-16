@@ -12,11 +12,7 @@ namespace UserControlsSample.ComplexCoefsTableSample
 {
     public class ComplexCoefsTableViewModel : ObservableObject
     {
-        private readonly ComplexCoefs _complexCoefs = new();
-        public ComplexCoefs ComplexCoefs
-        {
-            get => _complexCoefs;
-        }
+        public ComplexCoefs ComplexCoefs { get; } = new();
         private string _indexHeader = string.Empty;
         public string IndexHeader
         {
@@ -49,10 +45,10 @@ namespace UserControlsSample.ComplexCoefsTableSample
         }
         public ComplexCoefsTableViewModel()
         {
-            _complexCoefs.ComplexCoefValueChanged += ComplexCoefsChanged;
+            ComplexCoefs.ComplexCoefValueChanged += ComplexCoefsChanged;
             for (int i = 0; i < 20; i++)
             {
-                _complexCoefs.Items.Add(new ComplexCoef()
+                ComplexCoefs.Items.Add(new ComplexCoef()
                 {
                     Index = i,
                     Real = 1,

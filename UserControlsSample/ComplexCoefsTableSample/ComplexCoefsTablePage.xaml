@@ -21,12 +21,7 @@
         </Grid.RowDefinitions>
         <cct:ComplexCoefsTable
             Grid.Row="0"
-            ComplexCoefs="{Binding ComplexCoefs}"
-            IndexHeader="{Binding IndexHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            RealColumnHeader="{Binding RealColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            ImaginaryColumnHeader="{Binding ImaginaryColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            IndexVisibility="{Binding IndexVisibility, Mode=TwoWay}"
-            CheckBoxVisibility="{Binding CheckBoxVisibility, Mode=TwoWay}"/>
+            ComplexCoefs="{x:Bind _vm.ComplexCoefs, Mode=OneWay}"/>
         <StackPanel Grid.Row="1">
             <TextBlock Text="IndexHeader" />
             <TextBox Text="{Binding IndexHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -36,17 +31,11 @@
             <TextBox Text="{Binding ImaginaryColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="IndexVisibility"/>
             <ComboBox
-                x:Name="indexVisibility"
-                SelectedItem="{Binding IndexVisibility, Mode=TwoWay, Converter={StaticResource VisibilityConverter}}">
-                <x:String>Collapsed</x:String>
-                <x:String>Visible</x:String>
+                x:Name="indexVisibility">
             </ComboBox>
             <TextBlock Text="CheckBoxVisibility"/>
             <ComboBox
-                x:Name="checkBoxVisibility"
-                SelectedItem="{Binding CheckBoxVisibility, Mode=TwoWay, Converter={StaticResource VisibilityConverter}}">
-                <x:String>Collapsed</x:String>
-                <x:String>Visible</x:String>
+                x:Name="checkBoxVisibility">
             </ComboBox>
         </StackPanel>
     </Grid>

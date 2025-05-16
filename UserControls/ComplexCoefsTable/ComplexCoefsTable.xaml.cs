@@ -43,7 +43,7 @@ namespace UserControls.ComplexCoefsTable
         {
             if (d is ComplexCoefsTable complexCoefsTable)
             {
-                complexCoefsTable.indexColumn.Header = e.NewValue;
+                //complexCoefsTable.indexColumn.Header = e.NewValue;
             }
         }
 
@@ -101,7 +101,7 @@ namespace UserControls.ComplexCoefsTable
         {
             if (d is ComplexCoefsTable complexCoefsTable)
             {
-                complexCoefsTable.indexColumn.Visibility = (Visibility)e.NewValue;
+                //complexCoefsTable.indexColumn.Visibility = (Visibility)e.NewValue;
             }
         }
 
