@@ -7,10 +7,24 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:usercontrols="using:UserControls.NumericUpDown"
+    xmlns:converter="using:UserControls.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <converter:DecimalConverter x:Key="DecimalConverter"/>
+    </Page.Resources>
 
     <StackPanel>
-        <usercontrols:NumericUpDown Height="40" FontSize="20" Nick="{Binding Nick}" Maximum="{Binding Max}" Minimum="{Binding Min}" Value="{Binding Value, Mode=TwoWay}" StringFormat="E5" TextAlignment="Right"/>
+        <usercontrols:NumericUpDown
+            Height="40"
+            FontSize="20"
+            Nick="{x:Bind _vm.Nick, Mode=TwoWay}"
+            Maximum="{Binding Max}"
+            Minimum="{Binding Min}"
+            Value="{Binding Value, Mode=TwoWay}"
+            StringFormat="E5"
+            TextAlignment="Right"/>
+        <TextBlock Text="Nick"/>
+        <TextBox Text="{x:Bind _vm.Nick, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalConverter}}"/>
     </StackPanel>
 </Page>

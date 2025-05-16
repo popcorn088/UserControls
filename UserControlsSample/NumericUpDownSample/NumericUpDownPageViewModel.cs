@@ -17,6 +17,14 @@ namespace UserControlsSample.NumericUpDownSample
         }
         public static decimal Min => 0m;
         public static decimal Max => 100m;
-        public static decimal Nick => 2m;
+        private decimal _nick = 2m;
+        public decimal Nick
+        {
+            get => _nick;
+            set
+            {
+                SetProperty(ref _nick, value);
+            }
+        }
     }
 }

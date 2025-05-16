@@ -1,6 +1,7 @@
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using System;
 using System.Globalization;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -45,6 +46,7 @@ namespace UserControls.NumericUpDown
                 typeof(decimal),
                 typeof(NumericUpDown),
                 new PropertyMetadata(1.0m));
+
         public decimal Nick
         {
             get => (decimal)GetValue(NickProperty);
