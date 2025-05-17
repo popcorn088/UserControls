@@ -11,7 +11,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
-        <converter:VisibilityConverter x:Key="VisibilityConverter"/>
+        <converter:ColumnVisibilityConverter x:Key="ColumnVisibilityConverter"/>
     </Page.Resources>
 
     <Grid>

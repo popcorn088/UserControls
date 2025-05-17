@@ -1,5 +1,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,7 +27,16 @@ namespace UserControls.CoefsTableControl
                 "IndexHeader",
                 typeof(string),
                 typeof(CoefsTable),
-                new PropertyMetadata("Index"));
+                new PropertyMetadata("Index", new PropertyChangedCallback(OnIndexHeaderPropertyChanged)));
+
+        private static void OnIndexHeaderPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is CoefsTable coefsTable)
+            {
+                coefsTable.indexColumn.Header = e.NewValue;
+            }
+        }
+
         public string IndexHeader
         {
             get => (string)this.GetValue(IndexHeaderProperty);
@@ -37,7 +47,14 @@ namespace UserControls.CoefsTableControl
                 "ValueHeader",
                 typeof(string),
                 typeof(CoefsTable),
-                new PropertyMetadata("Value"));
+                new PropertyMetadata("Value", new PropertyChangedCallback(OnValueHeaderPropertyChanged)));
+        private static void OnValueHeaderPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is CoefsTable coefsTable)
+            {
+                coefsTable.valueColumn.Header = e.NewValue;
+            }
+        }
         public string ValueHeader
         {
             get => (string)this.GetValue(ValueHeaderProperty);
@@ -48,7 +65,16 @@ namespace UserControls.CoefsTableControl
                 "IndexVisibility",
                 typeof(Visibility),
                 typeof(CoefsTable),
-                new PropertyMetadata(Visibility.Visible));
+                new PropertyMetadata(Visibility.Visible, new PropertyChangedCallback(IndexVisibilityPropertyChanged)));
+
+        private static void IndexVisibilityPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is CoefsTable coefsTable)
+            {
+                coefsTable.indexColumn.Visibility = (Visibility)e.NewValue;
+            }
+        }
+
         public Visibility IndexVisibility
         {
             get => (Visibility)this.GetValue(IndexVisibilityProperty);
@@ -88,7 +114,6 @@ namespace UserControls.CoefsTableControl
             {
                 Index = Coefs.Items.Count,
                 Value = 0,
-                StringFormat = this.StringFormat,
             };
             Coefs.Items.Add(coef);
         }

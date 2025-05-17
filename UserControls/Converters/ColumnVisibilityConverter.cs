@@ -5,23 +5,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UserControls.Enums;
 
 namespace UserControls.Converters
 {
-    public class VisibilityConverter : IValueConverter
+    public class ColumnVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (value is Visibility visibility)
+            if (value is ColumnVisibility visibility)
             {
                 switch (visibility)
                 {
-                    case Visibility.Collapsed:
-                        return "Collapsed";
-                    case Visibility.Visible:
-                        return "Visible";
+                    case ColumnVisibility.Collapsed:
+                        return Visibility.Collapsed;
+                    case ColumnVisibility.Visible:
+                        return Visibility.Visible;
                     default:
-                        break;
+                        throw new NotImplementedException();
                 }
             }
             return DependencyProperty.UnsetValue;
@@ -29,16 +30,16 @@ namespace UserControls.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            if (value is string str)
+            if (value is Visibility visibility)
             {
-                switch (str)
+                switch (visibility)
                 {
-                    case "Collapsed":
-                        return Visibility.Collapsed;
-                    case "Visible":
-                        return Visibility.Visible;
+                    case Visibility.Collapsed:
+                        return ColumnVisibility.Collapsed;
+                    case Visibility.Visible:
+                        return ColumnVisibility.Visible;
                     default:
-                        break;
+                        throw new NotImplementedException();
                 }
             }
             return DependencyProperty.UnsetValue;

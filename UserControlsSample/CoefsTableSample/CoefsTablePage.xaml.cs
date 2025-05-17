@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UserControls.CoefsTableControl;
+using UserControls.Enums;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -25,12 +26,13 @@ namespace UserControlsSample.CoefsTableSample
     /// </summary>
     public sealed partial class CoefsTablePage : Page
     {
-        private readonly CoefsTablePageViewModel _vm;
+        private readonly CoefsTablePageViewModel viewModel;
+        public IEnumerable<ColumnVisibility> columnVisibilities { get; private set; } = Enum.GetValues<ColumnVisibility>().Cast<ColumnVisibility>();
         public CoefsTablePage()
         {
             this.InitializeComponent();
-            _vm = new CoefsTablePageViewModel();
-            DataContext = _vm;
+            viewModel = new CoefsTablePageViewModel();
+            DataContext = viewModel;
         }
     }
 }

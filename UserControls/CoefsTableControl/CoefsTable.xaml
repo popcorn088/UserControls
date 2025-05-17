@@ -16,6 +16,7 @@
     </UserControl.Resources>
     <Grid>
         <controls:DataGrid
+            x:Name="coefsDataGrid"
             ItemsSource="{x:Bind Coefs.Items, Mode=OneWay}"
             AutoGenerateColumns="False"
             SelectionChanged="SelectionChanged"
@@ -23,11 +24,13 @@
             HorizontalScrollBarVisibility="Auto">
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn
+                    x:Name="indexColumn"
                     IsReadOnly="True"
                     Header="{x:Bind IndexHeader}"
                     Visibility="{x:Bind IndexVisibility}"
                     Binding="{Binding Index}"/>
                 <controls:DataGridTextColumn
+                    x:Name="valueColumn"
                     Width="1*"
                     Header="{x:Bind ValueHeader}"
                     Binding="{Binding Value, Converter={StaticResource DecimalConveter}, Mode=TwoWay}"/>

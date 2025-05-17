@@ -18,25 +18,6 @@ namespace UserControls.CoefsTableControl
             set => SetProperty(ref _value, value);
         }
 
-        private string _stringFormat = string.Empty;
-        public string StringFormat
-        {
-            get => _stringFormat;
-            set
-            {
-                SetProperty(ref _stringFormat, value);
-                OnPropertyChanged(nameof(Value));
-            }
-        }
-        public string Convert(decimal value)
-            => value.ToString(StringFormat);
-        public void ConvertBack(string value)
-        {
-            if (decimal.TryParse(value, NumberStyles.AllowExponent | NumberStyles.Float, CultureInfo.InvariantCulture, out decimal result))
-            {
-                Value = result;
-            }
-        }
         public bool IsSelected { get; set; }
     }
 }

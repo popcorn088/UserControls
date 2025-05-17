@@ -7,29 +7,38 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:coefstable="using:UserControls.CoefsTableControl"
+    xmlns:converters="using:UserControls.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.Resources>
+        <converters:ColumnVisibilityConverter x:Key="ColumnVisibilityConverter"/>
+    </Page.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <coefstable:CoefsTable
-            x:Name="CoefsTable"
             Grid.Row="0"
-            Coefs="{x:Bind _vm.Coefs, Mode=OneWay}"
-            StringFormat="{Binding StringFormat, Mode=TwoWay}"
-            IndexHeader="HOGE"
-            ValueHeader="FUGA"
-            IndexVisibility="Collapsed"/>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="StringFormat"/>
-            <TextBox Grid.Column="1" Text="{Binding StringFormat, Mode=TwoWay}"/>
-        </Grid>
+            x:Name="CoefsTable"
+            Coefs="{x:Bind viewModel.Coefs, Mode=OneWay}"
+            StringFormat="{x:Bind viewModel.StringFormat, Mode=TwoWay}"
+            IndexHeader="{x:Bind viewModel.IndexHeader, Mode=TwoWay}"
+            ValueHeader="{x:Bind viewModel.ValueHeader, Mode=TwoWay}"
+            IndexVisibility="{x:Bind viewModel.IndexVisibility, Mode=TwoWay, Converter={StaticResource ColumnVisibilityConverter}}"/>
+        <StackPanel
+            Grid.Row="1">
+            <TextBlock Text="StringFormat"/>
+            <TextBox Text="{x:Bind viewModel.StringFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="IndexHeader"/>
+            <TextBox Text="{x:Bind viewModel.IndexHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="ValueHeader"/>
+            <TextBox Text="{x:Bind viewModel.ValueHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="IndexVisibility"/>
+            <ComboBox
+                SelectedItem="{x:Bind viewModel.IndexVisibility, Mode=TwoWay}"
+                ItemsSource="{x:Bind columnVisibilities}"/>
+        </StackPanel>
     </Grid>
 </Page>
