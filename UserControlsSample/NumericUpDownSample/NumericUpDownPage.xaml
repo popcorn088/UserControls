@@ -12,19 +12,32 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <converter:DecimalConverter x:Key="DecimalConverter"/>
+        <converter:TextBoxAlignmentConverter x:Key="TextBoxAlignmentConverter"/>
     </Page.Resources>
 
     <StackPanel>
         <usercontrols:NumericUpDown
             Height="40"
             FontSize="20"
-            Nick="{x:Bind _vm.Nick, Mode=TwoWay}"
-            Maximum="{Binding Max}"
-            Minimum="{Binding Min}"
+            Nick="{x:Bind viewModel.Nick, Mode=TwoWay}"
+            Maximum="{x:Bind viewModel.Max, Mode=TwoWay}"
+            Minimum="{x:Bind viewModel.Min, Mode=TwoWay}"
             Value="{Binding Value, Mode=TwoWay}"
-            StringFormat="E5"
-            TextAlignment="Right"/>
+            StringFormat="{x:Bind viewModel.StringFormat, Mode=TwoWay}"
+            TextAlignment="{x:Bind viewModel.TextBoxAlignment, Mode=TwoWay, Converter={StaticResource TextBoxAlignmentConverter}}"/>
         <TextBlock Text="Nick"/>
-        <TextBox Text="{x:Bind _vm.Nick, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalConverter}}"/>
+        <TextBox Text="{x:Bind viewModel.Nick, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalConverter}}"/>
+        <TextBlock Text="Maximum"/>
+        <TextBox Text="{x:Bind viewModel.Max, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalConverter}}"/>
+        <TextBlock Text="Minimum"/>
+        <TextBox Text="{x:Bind viewModel.Min, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalConverter}}"/>
+        <TextBlock Text="StringFormat"/>
+        <TextBox Text="{x:Bind viewModel.StringFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="TextAlignment"/>
+        <ComboBox
+            x:Name="comboBox"
+            ItemsSource="{x:Bind TextBoxAlignments}"
+            SelectedItem="{x:Bind viewModel.TextBoxAlignment, Mode=TwoWay}">
+        </ComboBox>
     </StackPanel>
 </Page>

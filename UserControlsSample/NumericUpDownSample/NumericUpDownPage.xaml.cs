@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UserControls.Enums;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -23,12 +24,13 @@ namespace UserControlsSample.NumericUpDownSample
     /// </summary>
     public sealed partial class NumericUpDownPage : Page
     {
-        private readonly NumericUpDownPageViewModel _vm;
+        private readonly NumericUpDownPageViewModel viewModel;
+        public IEnumerable<TextBoxAlignment> TextBoxAlignments { get; private set; } = Enum.GetValues(typeof(TextBoxAlignment)).Cast<TextBoxAlignment>();
         public NumericUpDownPage()
         {
             this.InitializeComponent();
-            _vm = new();
-            DataContext = _vm;
+            viewModel = new();
+            DataContext = viewModel;
         }
     }
 }

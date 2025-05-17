@@ -19,9 +19,8 @@
             Name="NumericUpDownTextBox"
             Text="{x:Bind Convert(Value), BindBack=ConvertBack, Mode=TwoWay}"
             FontSize="{x:Bind Root.FontSize}"
-            TextAlignment="{x:Bind TextAlignment}"
-            VerticalAlignment="Center"
-            >
+            TextAlignment="{x:Bind TextAlignment, Mode=TwoWay}"
+            VerticalAlignment="Center">
         </TextBox>
         <Grid Grid.Column="1" x:Name="ButtonColumn">
             <Grid.RowDefinitions>

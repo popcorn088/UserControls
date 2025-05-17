@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Globalization;
+using System.Linq;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -96,6 +97,7 @@ namespace UserControls.NumericUpDown
             get => (TextAlignment)GetValue(TextAlignmentProperty);
             set => SetValue(TextAlignmentProperty, value);
         }
+        public static readonly TextAlignment[] TextAlignments = Enum.GetValues<TextAlignment>().Cast<TextAlignment>().ToArray();
         RelayCommand<string> UpCommand { get; }
         RelayCommand<string> DownCommand { get; }
         public NumericUpDown()
