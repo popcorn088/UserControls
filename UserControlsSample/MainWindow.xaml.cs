@@ -50,12 +50,10 @@ namespace UserControlsSample
             }
             else if ((string)args.SelectedItemContainer.Content == "ComplexCoefsTable")
             {
-                /*
                 ContentFrame.Navigate(typeof(ComplexCoefsTablePage), null, new SlideNavigationTransitionInfo()
                 {
                     Effect = SlideNavigationTransitionEffect.FromLeft,
                 });
-                */
             }
         }
     }

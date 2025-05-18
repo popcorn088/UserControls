@@ -43,7 +43,7 @@ namespace UserControls.ComplexCoefsTable
         {
             if (d is ComplexCoefsTable complexCoefsTable)
             {
-                //complexCoefsTable.indexColumn.Header = e.NewValue;
+                complexCoefsTable.indexColumn.Header = e.NewValue;
             }
         }
 
@@ -90,25 +90,25 @@ namespace UserControls.ComplexCoefsTable
             get => (string)this.GetValue(ImaginaryColumnHeaderProperty);
             set => this.SetValue(ImaginaryColumnHeaderProperty, value);
         }
-        public static readonly DependencyProperty IndexVisibilityProperty
+        public static readonly DependencyProperty IndexColumnVisibilityProperty
             = DependencyProperty.Register(
-                "IndexVisibility",
+                nameof(IndexColumnVisibility),
                 typeof(Visibility),
                 typeof(ComplexCoefsTable),
-                new PropertyMetadata(Visibility.Visible, IndexVisibilityPropertyChangedCallback));
+                new PropertyMetadata(Visibility.Visible, IndexColumnVisibilityPropertyChangedCallback));
 
-        private static void IndexVisibilityPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void IndexColumnVisibilityPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is ComplexCoefsTable complexCoefsTable)
             {
-                //complexCoefsTable.indexColumn.Visibility = (Visibility)e.NewValue;
+                complexCoefsTable.indexColumn.Visibility = (Visibility)e.NewValue;
             }
         }
 
-        public Visibility IndexVisibility
+        public Visibility IndexColumnVisibility
         {
-            get => (Visibility)this.GetValue(IndexVisibilityProperty);
-            set => this.SetValue(IndexVisibilityProperty, value);
+            get => (Visibility)this.GetValue(IndexColumnVisibilityProperty);
+            set => this.SetValue(IndexColumnVisibilityProperty, value);
         }
         public static readonly DependencyProperty IsReadOnlyComplexColumnsProperty
             = DependencyProperty.Register(
@@ -122,14 +122,14 @@ namespace UserControls.ComplexCoefsTable
             set => this.SetValue(IsReadOnlyComplexColumnsProperty, value);
         }
 
-        public static readonly DependencyProperty CheckBoxVisibilityProperty
+        public static readonly DependencyProperty CheckBoxColumnVisibilityProperty
             = DependencyProperty.Register(
                 "CheckBoxVisibility",
                 typeof(Visibility),
                 typeof(ComplexCoefsTable),
-                new PropertyMetadata(Visibility.Visible, CheckBoxVisibilityPropertyChangedCallback));
+                new PropertyMetadata(Visibility.Visible, CheckBoxColumnVisibilityPropertyChangedCallback));
 
-        private static void CheckBoxVisibilityPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void CheckBoxColumnVisibilityPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is ComplexCoefsTable complexCoefsTable)
             {
@@ -137,10 +137,10 @@ namespace UserControls.ComplexCoefsTable
             }
         }
 
-        public Visibility CheckBoxVisibility
+        public Visibility CheckBoxColumnVisibility
         {
-            get => (Visibility)this.GetValue(CheckBoxVisibilityProperty);
-            set => this.SetValue(CheckBoxVisibilityProperty, value);
+            get => (Visibility)this.GetValue(CheckBoxColumnVisibilityProperty);
+            set => this.SetValue(CheckBoxColumnVisibilityProperty, value);
         }
         public ComplexCoefsTable()
         {

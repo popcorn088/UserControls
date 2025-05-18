@@ -12,6 +12,7 @@
     x:Name="Root">
     <UserControl.Resources>
         <converter:DecimalConverter x:Key="DecimalConverter"/>
+        <converter:ColumnVisibilityConverter x:Key="ColumnVisibilityConverter"/>
     </UserControl.Resources>
     <Grid>
         <controls:DataGrid
@@ -22,15 +23,22 @@
             SelectionChanged="SelectionChanged">
             <controls:DataGrid.Columns>
                 <controls:DataGridCheckBoxColumn
-                    x:Name="checkBoxColumn"/>
+                    x:Name="checkBoxColumn"
+                    Binding="{Binding IsChecked, Mode=TwoWay}"
+                    Visibility="{x:Bind CheckBoxColumnVisibility}"/>
                 <controls:DataGridTextColumn
-                    Binding="{Binding Index}"/>
+                    x:Name="indexColumn"
+                    Binding="{Binding Index}"
+                    Visibility="{x:Bind IndexColumnVisibility}"
+                    Header="{x:Bind IndexHeader}"/>
                 <controls:DataGridTextColumn
                     x:Name="realColumn"
-                    Width="1*"/>
+                    Width="1*"
+                    Binding="{Binding Real, Converter={StaticResource DecimalConverter}}"/>
                 <controls:DataGridTextColumn
                     x:Name="imaginaryColumn"
-                    Width="1*"/>
+                    Width="1*"
+                    Binding="{Binding Imaginary, Converter={StaticResource DecimalConverter}}"/>
             </controls:DataGrid.Columns>
             <controls:DataGrid.ContextFlyout>
                 <MenuFlyout>

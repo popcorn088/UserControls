@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using UserControls.ComplexCoefsTable;
 using System.Numerics;
 using Microsoft.UI.Xaml;
+using UserControls.Enums;
 
 namespace UserControlsSample.ComplexCoefsTableSample
 {
@@ -31,28 +32,29 @@ namespace UserControlsSample.ComplexCoefsTableSample
             get => _imaginaryColumnHeader;
             set => SetProperty(ref _imaginaryColumnHeader, value);
         }
-        private Visibility _indexVisibility = Visibility.Collapsed;
-        public Visibility IndexVisibility
+        private ColumnVisibility _indexColumnVisibility = ColumnVisibility.Visible;
+        public ColumnVisibility IndexColumnVisibility
         {
-            get => _indexVisibility;
-            set => SetProperty(ref _indexVisibility, value);
+            get => _indexColumnVisibility;
+            set => SetProperty(ref _indexColumnVisibility, value);
         }
-        private Visibility _checkBoxVisibility = Visibility.Collapsed;
-        public Visibility CheckBoxVisibility
+        private ColumnVisibility _checkBoxColumnVisibility = ColumnVisibility.Visible;
+        public ColumnVisibility CheckBoxColumnVisibility
         {
-            get => _checkBoxVisibility;
-            set => SetProperty(ref _checkBoxVisibility, value);
+            get => _checkBoxColumnVisibility;
+            set => SetProperty(ref _checkBoxColumnVisibility, value);
         }
         public ComplexCoefsTableViewModel()
         {
             ComplexCoefs.ComplexCoefValueChanged += ComplexCoefsChanged;
+            Random random = new Random();
             for (int i = 0; i < 20; i++)
             {
                 ComplexCoefs.Items.Add(new ComplexCoef()
                 {
                     Index = i,
-                    Real = 1,
-                    Imaginary = 2,
+                    Real = (decimal)random.NextDouble(),
+                    Imaginary = (decimal)random.NextDouble(),
                 });
             }
         }

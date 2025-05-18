@@ -21,21 +21,28 @@
         </Grid.RowDefinitions>
         <cct:ComplexCoefsTable
             Grid.Row="0"
-            ComplexCoefs="{x:Bind _vm.ComplexCoefs, Mode=OneWay}"/>
+            ComplexCoefs="{x:Bind viewModel.ComplexCoefs, Mode=OneWay}"
+            IndexHeader="{x:Bind viewModel.IndexHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            IndexColumnVisibility="{x:Bind viewModel.IndexColumnVisibility, Mode=TwoWay, Converter={StaticResource ColumnVisibilityConverter}}"
+            RealColumnHeader="{x:Bind viewModel.RealColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            ImaginaryColumnHeader="{x:Bind viewModel.ImaginaryColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            CheckBoxColumnVisibility="{x:Bind viewModel.CheckBoxColumnVisibility, Mode=TwoWay, Converter={StaticResource ColumnVisibilityConverter}}"/>
         <StackPanel Grid.Row="1">
             <TextBlock Text="IndexHeader" />
-            <TextBox Text="{Binding IndexHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{x:Bind viewModel.IndexHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="RealColumnHeader" />
-            <TextBox Text="{Binding RealColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{x:Bind viewModel.RealColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="ImaginaryColumnHeader" />
-            <TextBox Text="{Binding ImaginaryColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock Text="IndexVisibility"/>
+            <TextBox Text="{x:Bind viewModel.ImaginaryColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="IndexColumnVisibility"/>
             <ComboBox
-                x:Name="indexVisibility">
+                ItemsSource="{x:Bind ColumnVisibilities}"
+                SelectedItem="{x:Bind viewModel.IndexColumnVisibility, Mode=TwoWay}">
             </ComboBox>
-            <TextBlock Text="CheckBoxVisibility"/>
+            <TextBlock Text="CheckBoxColumnVisibility"/>
             <ComboBox
-                x:Name="checkBoxVisibility">
+                ItemsSource="{x:Bind ColumnVisibilities}"
+                SelectedItem="{x:Bind viewModel.CheckBoxColumnVisibility, Mode=TwoWay}">
             </ComboBox>
         </StackPanel>
     </Grid>
