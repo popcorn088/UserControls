@@ -30,15 +30,18 @@
                     x:Name="indexColumn"
                     Binding="{Binding Index}"
                     Visibility="{x:Bind IndexColumnVisibility}"
-                    Header="{x:Bind IndexHeader}"/>
+                    Header="{x:Bind IndexColumnHeader}"
+                    IsReadOnly="True"/>
                 <controls:DataGridTextColumn
                     x:Name="realColumn"
                     Width="1*"
-                    Binding="{Binding Real, Converter={StaticResource DecimalConverter}}"/>
+                    Binding="{Binding Real, Converter={StaticResource DecimalConverter}}"
+                    Header="{x:Bind RealColumnHeader}"/>
                 <controls:DataGridTextColumn
                     x:Name="imaginaryColumn"
                     Width="1*"
-                    Binding="{Binding Imaginary, Converter={StaticResource DecimalConverter}}"/>
+                    Binding="{Binding Imaginary, Converter={StaticResource DecimalConverter}}"
+                    Header="{x:Bind ImaginaryColumnHeader}"/>
             </controls:DataGrid.Columns>
             <controls:DataGrid.ContextFlyout>
                 <MenuFlyout>

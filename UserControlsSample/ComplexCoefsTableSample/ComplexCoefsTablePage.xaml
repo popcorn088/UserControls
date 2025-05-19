@@ -22,14 +22,14 @@
         <cct:ComplexCoefsTable
             Grid.Row="0"
             ComplexCoefs="{x:Bind viewModel.ComplexCoefs, Mode=OneWay}"
-            IndexHeader="{x:Bind viewModel.IndexHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            IndexColumnHeader="{x:Bind viewModel.IndexColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             IndexColumnVisibility="{x:Bind viewModel.IndexColumnVisibility, Mode=TwoWay, Converter={StaticResource ColumnVisibilityConverter}}"
             RealColumnHeader="{x:Bind viewModel.RealColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             ImaginaryColumnHeader="{x:Bind viewModel.ImaginaryColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             CheckBoxColumnVisibility="{x:Bind viewModel.CheckBoxColumnVisibility, Mode=TwoWay, Converter={StaticResource ColumnVisibilityConverter}}"/>
         <StackPanel Grid.Row="1">
             <TextBlock Text="IndexHeader" />
-            <TextBox Text="{x:Bind viewModel.IndexHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{x:Bind viewModel.IndexColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="RealColumnHeader" />
             <TextBox Text="{x:Bind viewModel.RealColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="ImaginaryColumnHeader" />

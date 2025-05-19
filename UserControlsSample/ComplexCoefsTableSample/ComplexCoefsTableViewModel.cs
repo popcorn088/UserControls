@@ -14,19 +14,19 @@ namespace UserControlsSample.ComplexCoefsTableSample
     public class ComplexCoefsTableViewModel : ObservableObject
     {
         public ComplexCoefs ComplexCoefs { get; } = new();
-        private string _indexHeader = string.Empty;
-        public string IndexHeader
+        private string _indexColumnHeader = "Index";
+        public string IndexColumnHeader
         {
-            get => _indexHeader;
-            set => SetProperty(ref _indexHeader, value);
+            get => _indexColumnHeader;
+            set => SetProperty(ref _indexColumnHeader, value);
         }
-        private string _realColumnHeader = string.Empty;
+        private string _realColumnHeader = "Real";
         public string RealColumnHeader
         {
             get => _realColumnHeader;
             set => SetProperty(ref _realColumnHeader, value);
         }
-        private string _imaginaryColumnHeader = string.Empty;
+        private string _imaginaryColumnHeader = "Imaginary";
         public string ImaginaryColumnHeader
         {
             get => _imaginaryColumnHeader;

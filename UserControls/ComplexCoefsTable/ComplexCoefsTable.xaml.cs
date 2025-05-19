@@ -32,14 +32,14 @@ namespace UserControls.ComplexCoefsTable
             get => (ComplexCoefs)this.GetValue(ComplexCoefsProperty);
             set => this.SetValue(ComplexCoefsProperty, value);
         }
-        public static readonly DependencyProperty IndexHeaderProperty
+        public static readonly DependencyProperty IndexColumnHeaderProperty
             = DependencyProperty.Register(
-                "IndexHeader",
+                nameof(IndexColumnHeader),
                 typeof(string),
                 typeof(ComplexCoefsTable),
-                new PropertyMetadata("Index", IndexHeaderPropertyChangedCallback));
+                new PropertyMetadata("Index", IndexColumnHeaderPropertyChangedCallback));
 
-        private static void IndexHeaderPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void IndexColumnHeaderPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is ComplexCoefsTable complexCoefsTable)
             {
@@ -47,14 +47,14 @@ namespace UserControls.ComplexCoefsTable
             }
         }
 
-        public string IndexHeader
+        public string IndexColumnHeader
         {
-            get => (string)this.GetValue(IndexHeaderProperty);
-            set => this.SetValue(IndexHeaderProperty, value);
+            get => (string)this.GetValue(IndexColumnHeaderProperty);
+            set => this.SetValue(IndexColumnHeaderProperty, value);
         }
         public static readonly DependencyProperty RealColumnHeaderProperty
             = DependencyProperty.Register(
-                "RealColumnHeader",
+                nameof(RealColumnHeader),
                 typeof(string),
                 typeof(ComplexCoefsTable),
                 new PropertyMetadata("Real", RealColumnHeaderPropertyChangedCallback));
@@ -73,7 +73,7 @@ namespace UserControls.ComplexCoefsTable
         }
         public static readonly DependencyProperty ImaginaryColumnHeaderProperty
             = DependencyProperty.Register(
-                "ImaginaryColumnHeader",
+                nameof(ImaginaryColumnHeader),
                 typeof(string),
                 typeof(ComplexCoefsTable),
                 new PropertyMetadata("Imaginary", ImaginaryColumnHeaderProrpertyChangedCallback));
@@ -112,7 +112,7 @@ namespace UserControls.ComplexCoefsTable
         }
         public static readonly DependencyProperty IsReadOnlyComplexColumnsProperty
             = DependencyProperty.Register(
-                "IsReadOnlyComplexColumns",
+                nameof(IsReadOnlyComplexColumns),
                 typeof(bool),
                 typeof(ComplexCoefsTable),
                 new PropertyMetadata(false));
@@ -124,7 +124,7 @@ namespace UserControls.ComplexCoefsTable
 
         public static readonly DependencyProperty CheckBoxColumnVisibilityProperty
             = DependencyProperty.Register(
-                "CheckBoxVisibility",
+                nameof(CheckBoxColumnVisibility),
                 typeof(Visibility),
                 typeof(ComplexCoefsTable),
                 new PropertyMetadata(Visibility.Visible, CheckBoxColumnVisibilityPropertyChangedCallback));
