@@ -19,17 +19,17 @@ namespace UserControlsSample.CoefsTableSample
         {
             get => _coefs;
         }
-        private string _indexHeader = "Index";
-        public string IndexHeader
+        private string _indexColumnHeader = "Index";
+        public string IndexColumnHeader
         {
-            get => _indexHeader;
-            set => SetProperty(ref _indexHeader, value);
+            get => _indexColumnHeader;
+            set => SetProperty(ref _indexColumnHeader, value);
         }
-        private string _valueHeader = "Value";
-        public string ValueHeader
+        private string _valueColumnHeader = "Value";
+        public string ValueColumnHeader
         {
-            get => _valueHeader;
-            set => SetProperty(ref _valueHeader, value);
+            get => _valueColumnHeader;
+            set => SetProperty(ref _valueColumnHeader, value);
         }
         private string _stringFormat = "F3";
         public string StringFormat
@@ -37,16 +37,16 @@ namespace UserControlsSample.CoefsTableSample
             get => _stringFormat;
             set => SetProperty(ref _stringFormat, value);
         }
-        private ColumnVisibility _indexVisibility = ColumnVisibility.Visible;
-        public ColumnVisibility IndexVisibility
+        private ColumnVisibility _indexColumnVisibility = ColumnVisibility.Visible;
+        public ColumnVisibility IndexColumnVisibility
         {
-            get => _indexVisibility;
-            set => SetProperty(ref _indexVisibility, value);
+            get => _indexColumnVisibility;
+            set => SetProperty(ref _indexColumnVisibility, value);
         }
         public CoefsTablePageViewModel()
         {
             _coefs.CoefValueChanged += CoefsChanged;
-            Random random = new Random();
+            var random = new Random();
             for (int i = 0; i < 30; i++)
             {
                 Coef item = new()

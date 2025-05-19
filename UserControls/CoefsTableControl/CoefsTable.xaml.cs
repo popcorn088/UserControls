@@ -22,14 +22,14 @@ namespace UserControls.CoefsTableControl
             get => (Coefs)this.GetValue(CoefsProperty);
             set => this.SetValue(CoefsProperty, value);
         }
-        public static readonly DependencyProperty IndexHeaderProperty
+        public static readonly DependencyProperty IndexColumnHeaderProperty
             = DependencyProperty.Register(
-                "IndexHeader",
+                nameof(IndexColumnHeader),
                 typeof(string),
                 typeof(CoefsTable),
-                new PropertyMetadata("Index", new PropertyChangedCallback(OnIndexHeaderPropertyChanged)));
+                new PropertyMetadata("Index", new PropertyChangedCallback(OnIndexColumnHeaderPropertyChanged)));
 
-        private static void OnIndexHeaderPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnIndexColumnHeaderPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is CoefsTable coefsTable)
             {
@@ -37,37 +37,37 @@ namespace UserControls.CoefsTableControl
             }
         }
 
-        public string IndexHeader
+        public string IndexColumnHeader
         {
-            get => (string)this.GetValue(IndexHeaderProperty);
-            set => this.SetValue(IndexHeaderProperty, value);
+            get => (string)this.GetValue(IndexColumnHeaderProperty);
+            set => this.SetValue(IndexColumnHeaderProperty, value);
         }
-        public static readonly DependencyProperty ValueHeaderProperty
+        public static readonly DependencyProperty ValueColumnHeaderProperty
             = DependencyProperty.Register(
-                "ValueHeader",
+                nameof(ValueColumnHeader),
                 typeof(string),
                 typeof(CoefsTable),
-                new PropertyMetadata("Value", new PropertyChangedCallback(OnValueHeaderPropertyChanged)));
-        private static void OnValueHeaderPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+                new PropertyMetadata("Value", new PropertyChangedCallback(OnValueColumnHeaderPropertyChanged)));
+        private static void OnValueColumnHeaderPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is CoefsTable coefsTable)
             {
                 coefsTable.valueColumn.Header = e.NewValue;
             }
         }
-        public string ValueHeader
+        public string ValueColumnHeader
         {
-            get => (string)this.GetValue(ValueHeaderProperty);
-            set => this.SetValue(ValueHeaderProperty, value);
+            get => (string)this.GetValue(ValueColumnHeaderProperty);
+            set => this.SetValue(ValueColumnHeaderProperty, value);
         }
-        public static readonly DependencyProperty IndexVisibilityProperty
+        public static readonly DependencyProperty IndexColumnVisibilityProperty
             = DependencyProperty.Register(
-                "IndexVisibility",
+                nameof(IndexColumnVisibility),
                 typeof(Visibility),
                 typeof(CoefsTable),
-                new PropertyMetadata(Visibility.Visible, new PropertyChangedCallback(IndexVisibilityPropertyChanged)));
+                new PropertyMetadata(Visibility.Visible, new PropertyChangedCallback(IndexColumnVisibilityPropertyChanged)));
 
-        private static void IndexVisibilityPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void IndexColumnVisibilityPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is CoefsTable coefsTable)
             {
@@ -75,14 +75,14 @@ namespace UserControls.CoefsTableControl
             }
         }
 
-        public Visibility IndexVisibility
+        public Visibility IndexColumnVisibility
         {
-            get => (Visibility)this.GetValue(IndexVisibilityProperty);
-            set => this.SetValue(IndexVisibilityProperty, value);
+            get => (Visibility)this.GetValue(IndexColumnVisibilityProperty);
+            set => this.SetValue(IndexColumnVisibilityProperty, value);
         }
         public static readonly DependencyProperty StringFormatProperty
             = DependencyProperty.Register(
-                "StringFormat",
+                nameof(StringFormat),
                 typeof(string),
                 typeof(CoefsTable),
                 new PropertyMetadata(string.Empty));

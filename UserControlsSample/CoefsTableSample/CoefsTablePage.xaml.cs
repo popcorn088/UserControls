@@ -27,7 +27,7 @@ namespace UserControlsSample.CoefsTableSample
     public sealed partial class CoefsTablePage : Page
     {
         private readonly CoefsTablePageViewModel viewModel;
-        public IEnumerable<ColumnVisibility> columnVisibilities { get; private set; } = Enum.GetValues<ColumnVisibility>().Cast<ColumnVisibility>();
+        public IEnumerable<ColumnVisibility> ColumnVisibilities { get; private set; } = Enum.GetValues<ColumnVisibility>().Cast<ColumnVisibility>();
         public CoefsTablePage()
         {
             this.InitializeComponent();

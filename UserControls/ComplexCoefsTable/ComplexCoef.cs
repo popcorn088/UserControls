@@ -28,7 +28,7 @@ namespace UserControls.ComplexCoefsTable
             get => _imaginary;
             set => SetProperty(ref _imaginary, value);
         }
-        public Complex Value => new Complex((double)Real, (double)Imaginary);
+        public Complex Value => new((double)Real, (double)Imaginary);
         private bool _isChecked = false;
         public bool IsChecked
         {

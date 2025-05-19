@@ -15,15 +15,12 @@ namespace UserControls.Converters
         {
             if (value is ColumnVisibility visibility)
             {
-                switch (visibility)
+                return visibility switch
                 {
-                    case ColumnVisibility.Collapsed:
-                        return Visibility.Collapsed;
-                    case ColumnVisibility.Visible:
-                        return Visibility.Visible;
-                    default:
-                        throw new NotImplementedException();
-                }
+                    ColumnVisibility.Collapsed => Visibility.Collapsed,
+                    ColumnVisibility.Visible => (object)Visibility.Visible,
+                    _ => throw new NotImplementedException(),
+                };
             }
             return DependencyProperty.UnsetValue;
         }
@@ -32,15 +29,12 @@ namespace UserControls.Converters
         {
             if (value is Visibility visibility)
             {
-                switch (visibility)
+                return visibility switch
                 {
-                    case Visibility.Collapsed:
-                        return ColumnVisibility.Collapsed;
-                    case Visibility.Visible:
-                        return ColumnVisibility.Visible;
-                    default:
-                        throw new NotImplementedException();
-                }
+                    Visibility.Collapsed => ColumnVisibility.Collapsed,
+                    Visibility.Visible => (object)ColumnVisibility.Visible,
+                    _ => throw new NotImplementedException(),
+                };
             }
             return DependencyProperty.UnsetValue;
         }

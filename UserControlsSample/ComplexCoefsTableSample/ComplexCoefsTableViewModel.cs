@@ -47,7 +47,7 @@ namespace UserControlsSample.ComplexCoefsTableSample
         public ComplexCoefsTableViewModel()
         {
             ComplexCoefs.ComplexCoefValueChanged += ComplexCoefsChanged;
-            Random random = new Random();
+            var random = new Random();
             for (int i = 0; i < 20; i++)
             {
                 ComplexCoefs.Items.Add(new ComplexCoef()

@@ -15,21 +15,15 @@ namespace UserControls.Converters
         {
             if (value is TextBoxAlignment textboxAlignment)
             {
-                switch (textboxAlignment)
+                return textboxAlignment switch
                 {
-                    case TextBoxAlignment.Center:
-                        return TextAlignment.Center;
-                    case TextBoxAlignment.Left:
-                        return TextAlignment.Left;
-                    case TextBoxAlignment.Right:
-                        return TextAlignment.Right;
-                    case TextBoxAlignment.Justify:
-                        return TextAlignment.Justify;
-                    case TextBoxAlignment.DetectFromContent:
-                        return TextAlignment.DetectFromContent;
-                    default:
-                        throw new NotImplementedException();
-                }
+                    TextBoxAlignment.Center => TextAlignment.Center,
+                    TextBoxAlignment.Left => TextAlignment.Left,
+                    TextBoxAlignment.Right => TextAlignment.Right,
+                    TextBoxAlignment.Justify => TextAlignment.Justify,
+                    TextBoxAlignment.DetectFromContent => (object)TextAlignment.DetectFromContent,
+                    _ => throw new NotImplementedException(),
+                };
             }
             return DependencyProperty.UnsetValue;
         }
@@ -38,21 +32,15 @@ namespace UserControls.Converters
         {
             if (value is TextAlignment textAlignment)
             {
-                switch (textAlignment)
+                return textAlignment switch
                 {
-                    case TextAlignment.Center:
-                        return TextBoxAlignment.Center;
-                    case TextAlignment.Left:
-                        return TextBoxAlignment.Left;
-                    case TextAlignment.Right:
-                        return TextBoxAlignment.Right;
-                    case TextAlignment.Justify:
-                        return TextBoxAlignment.Justify;
-                    case TextAlignment.DetectFromContent:
-                        return TextBoxAlignment.DetectFromContent;
-                    default:
-                        throw new NotImplementedException();
-                }
+                    TextAlignment.Center => TextBoxAlignment.Center,
+                    TextAlignment.Left => TextBoxAlignment.Left,
+                    TextAlignment.Right => TextBoxAlignment.Right,
+                    TextAlignment.Justify => TextBoxAlignment.Justify,
+                    TextAlignment.DetectFromContent => (object)TextBoxAlignment.DetectFromContent,
+                    _ => throw new NotImplementedException(),
+                };
             }
             return DependencyProperty.UnsetValue;
         }

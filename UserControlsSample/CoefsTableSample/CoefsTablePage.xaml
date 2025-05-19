@@ -24,21 +24,21 @@
             x:Name="CoefsTable"
             Coefs="{x:Bind viewModel.Coefs, Mode=OneWay}"
             StringFormat="{x:Bind viewModel.StringFormat, Mode=TwoWay}"
-            IndexHeader="{x:Bind viewModel.IndexHeader, Mode=TwoWay}"
-            ValueHeader="{x:Bind viewModel.ValueHeader, Mode=TwoWay}"
-            IndexVisibility="{x:Bind viewModel.IndexVisibility, Mode=TwoWay, Converter={StaticResource ColumnVisibilityConverter}}"/>
+            IndexColumnHeader="{x:Bind viewModel.IndexColumnHeader, Mode=TwoWay}"
+            ValueColumnHeader="{x:Bind viewModel.ValueColumnHeader, Mode=TwoWay}"
+            IndexColumnVisibility="{x:Bind viewModel.IndexColumnVisibility, Mode=TwoWay, Converter={StaticResource ColumnVisibilityConverter}}"/>
         <StackPanel
             Grid.Row="1">
             <TextBlock Text="StringFormat"/>
             <TextBox Text="{x:Bind viewModel.StringFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="IndexHeader"/>
-            <TextBox Text="{x:Bind viewModel.IndexHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{x:Bind viewModel.IndexColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="ValueHeader"/>
-            <TextBox Text="{x:Bind viewModel.ValueHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{x:Bind viewModel.ValueColumnHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="IndexVisibility"/>
             <ComboBox
-                SelectedItem="{x:Bind viewModel.IndexVisibility, Mode=TwoWay}"
-                ItemsSource="{x:Bind columnVisibilities}"/>
+                SelectedItem="{x:Bind viewModel.IndexColumnVisibility, Mode=TwoWay}"
+                ItemsSource="{x:Bind ColumnVisibilities}"/>
         </StackPanel>
     </Grid>
 </Page>
