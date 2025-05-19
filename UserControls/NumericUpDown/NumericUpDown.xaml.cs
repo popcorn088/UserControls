@@ -133,10 +133,6 @@ namespace UserControls.NumericUpDown
             {
                 Value = result;
             }
-            else
-            {
-                Value = Value;
-            }
         }
 
         private void UpButtonLoaded(object sender, RoutedEventArgs e)
