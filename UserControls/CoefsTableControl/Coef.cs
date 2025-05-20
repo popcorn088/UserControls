@@ -5,12 +5,7 @@ namespace UserControls.CoefsTableControl
 {
     public class Coef : ObservableObject
     {
-        private int _index;
-        public int Index
-        {
-            get => _index;
-            set => SetProperty(ref _index, value);
-        }
+        public int Index { get; set; }
         private decimal _value;
         public decimal Value
         {
