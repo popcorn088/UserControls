@@ -15,6 +15,7 @@
   <ItemGroup>
     <None Remove="CoefsTableSample\CoefsTablePage.xaml" />
     <None Remove="ComplexCoefsTableSample\ComplexCoefsTablePage.xaml" />
+    <None Remove="DecimalConverter\DecimalConverterPage.xaml" />
     <None Remove="NumericUpDownSample\NumericUpDownPage.xaml" />
   </ItemGroup>
 
@@ -59,6 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="ComplexCoefsTableSample\ComplexCoefsTablePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DecimalConverter\DecimalConverterPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

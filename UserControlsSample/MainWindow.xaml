@@ -11,6 +11,7 @@
     <Grid>
         <NavigationView SelectionChanged="NavigationViewSelectionChanged">
             <NavigationView.MenuItems>
+                <NavigationViewItem Content="DecimalConverter"/>
                 <NavigationViewItem Content="NumericUpDown"/>
                 <NavigationViewItem Content="CoefsTable"/>
                 <NavigationViewItem Content="ComplexCoefsTable"/>

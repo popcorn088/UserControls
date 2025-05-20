@@ -16,6 +16,7 @@ using UserControlsSample.NumericUpDownSample;
 using UserControlsSample.ComplexCoefsTableSample;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using UserControlsSample.DecimalConverter;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -34,7 +35,14 @@ namespace UserControlsSample
 
         private void NavigationViewSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            if ((string)args.SelectedItemContainer.Content == "NumericUpDown")
+            if ((string)args.SelectedItemContainer.Content == "DecimalConverter")
+            {
+                ContentFrame.Navigate(typeof(DecimalConverterPage), null, new SlideNavigationTransitionInfo()
+                {
+                    Effect = SlideNavigationTransitionEffect.FromLeft,
+                });
+            }
+            else if ((string)args.SelectedItemContainer.Content == "NumericUpDown")
             {
                 ContentFrame.Navigate(typeof(NumericUpDownPage), null, new SlideNavigationTransitionInfo()
                 {
