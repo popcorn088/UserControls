@@ -10,12 +10,7 @@ namespace UserControls.ComplexCoefsTable
 {
     public class ComplexCoef : ObservableObject
     {
-        private int _index;
-        public int Index
-        {
-            get => _index;
-            set => SetProperty(ref _index, value);
-        }
+        public int Index { get; set; }
         private decimal _real;
         public decimal Real
         {
