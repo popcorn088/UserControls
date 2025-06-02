@@ -25,7 +25,9 @@
                 <controls:DataGridCheckBoxColumn
                     x:Name="checkBoxColumn"
                     Binding="{Binding IsChecked, Mode=TwoWay}"
-                    Visibility="{x:Bind CheckBoxColumnVisibility}"/>
+                    Visibility="{x:Bind CheckBoxColumnVisibility}"
+                    Width="50"
+                    CanUserResize="False"/>
                 <controls:DataGridTextColumn
                     x:Name="indexColumn"
                     Binding="{Binding Index}"
